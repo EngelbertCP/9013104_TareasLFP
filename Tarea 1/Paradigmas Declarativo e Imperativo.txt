@@ -1,0 +1,10 @@
+Un Paradigma de Programación es una forma o estilo de lenguaje y de programación, tanto en el diseño del lenguaje de programación como en el modo de obtener los resultados deseados con el programa.
+
+En el Paradigma Imperativo los programas consisten en una sucesión de instrucciones  o sentencias precisas, de ordenes concretas. El código describe paso a paso todo lo que hará el programa. Ejemplos de lenguajes con éste paradigma son Fortran, Pascal, C, C++, etc.
+
+En el Paradigma Declarativo no se necesita definir algoritmos sino describir el problema o la tarea a resolver. Este paradigma se divide en Lógico y Funcional.
+Los lenguajes lógicos como Prolog o SQL son declarativos, el programador únicamente da la instrucción de lo que va a resolver el lenguaje sin especificar cómo, por ejemplo al hacer consultas en una Base de Datos con SQL, no se indica en qué parte del disco o de memoria, nada más se pide una consulta.
+
+Lenguajes como Python o Java pueden adoptar uno o varios paradigmas, son llamados multiparadigmas.
+
+La ventaja de los lenguajes y la programación bajo el Paradigma Declarativo es su claridad, y de que pueden ser razonados matemáticamente.
