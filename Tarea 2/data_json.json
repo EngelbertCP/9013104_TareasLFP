@@ -1,0 +1,28 @@
+{
+    "clientes": [
+        {
+            "nombre": "Julian",
+            "apellido": "Pedroza",
+            "edad": 27,
+            "monto": 7.17
+        },
+        {
+            "nombre": "Joel",
+            "apellido": "Hinestroza",
+            "edad": 31,
+            "monto": 5.5
+        },
+        {
+            "nombre": "Mariano",
+            "apellido": "Castro",
+            "edad": 33,
+            "monto": 8.5
+        },
+        {
+            "nombre": "Jorge",
+            "apellido": "Rivera",
+            "edad": 36,
+            "monto": 1.11
+        }
+    ]
+}
