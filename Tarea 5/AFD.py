@@ -57,4 +57,3 @@ def AFP(entrada):
 
 AFP(cadena)
 AFP(cadena2)
-AFP(cadena3)
