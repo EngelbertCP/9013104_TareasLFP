@@ -1,19 +1,57 @@
-cadena = 'aab1' #correcta
-cadena2 = 'aabb11b' #incorrecta
+import re
+
+regexint = r"([0-9]+)"
+regexstr = r"([a-zA-Z]+)"
+regexuscore = r"([_]+)"
+
+cadena = 'servidor1' #correcta
+cadena2 = '3servidor' #incorrecta
 
 def AFP(entrada):
     estado=0
 
     for i in range(len(entrada)):
         if estado == 0:
-            if str(entrada[i]):
-                estado = 2
-            elif:
-                print("Error: cadena incorrecta")
+            match = re.match(regexuscore, entrada[i])
+            if match != None:
+                estado = 1
+            else:
+                match = re.match(regexstr, entrada[i])
+                if match != None:
+                    estado = 2
+                else:
+                    print("Error: cadena incorrecta")
+                    return
         elif estado == 1:
+            match = re.match(regexuscore, entrada[i])
+            if match != None:
+                estado = 1
+            else:
+                match = re.match(regexstr, entrada[i])
+                if match != None:
+                    estado = 3
+                else:
+                    print("Error: cadena incorrecta")
+                    return
         elif estado == 2:
+            match = re.match(regexstr, entrada[i])
+            if match != None:
+                estado = 2
+            else:
+                match = re.match(regexint, entrada[i])
+                if match != None:
+                    estado = 4
+                else:
+                    print("Error: cadena incorrecta")
+                    return
         elif estado == 3:
-        elif estado == 4:
+            match = re.match(regexint, entrada[i])
+            if match !=  None:
+                estado = 4
+            else:
+                print("Error: cadena incorrecta")
+                return
+    print("Cadena aceptada")
 
 AFP(cadena)
 AFP(cadena2)
