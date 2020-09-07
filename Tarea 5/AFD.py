@@ -4,13 +4,15 @@ regexint = r"([0-9]+)"
 regexstr = r"([a-zA-Z]+)"
 regexuscore = r"([_]+)"
 
-cadena = 'servidor1' #correcta
+cadena = '__servidor1' #incorrecta
 cadena2 = '3servidor' #incorrecta
+
 
 def AFP(entrada):
     estado=0
 
     for i in range(len(entrada)):
+        #print(entrada[i])
         if estado == 0:
             match = re.match(regexuscore, entrada[i])
             if match != None:
@@ -55,3 +57,4 @@ def AFP(entrada):
 
 AFP(cadena)
 AFP(cadena2)
+AFP(cadena3)
