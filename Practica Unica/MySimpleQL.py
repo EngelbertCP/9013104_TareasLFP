@@ -34,8 +34,8 @@ while True:
 
             # Para la primer palabra de la línea ingresada
 
-            # Select
-            if item.lower() == "select":
+            # Seleccionar
+            if item.lower() == "seleccionar":
                 #print("SimpleSQL Select")
                 # with open('Practica1.json') as file:
                 # data = json.load(file)
