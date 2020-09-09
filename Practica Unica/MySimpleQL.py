@@ -1,10 +1,12 @@
 # Proyecto: Práctica Única
 # Laboratorio de Lenguajes Formales 2S2020
 # USAC
-# Aux. Javier Alberto Cabrera
+# Tutor: Javier Alberto Cabrera
 # Engelbert Cárdenas Palacios - Carné: 009013104
 
 import json
+import webbrowser
+import os
 
 # Bienvenida
 print("Conectado a SimpleSQL")
@@ -75,13 +77,15 @@ while True:
                 carga = True
                 for item in palabras_comando:
                     if item.lower() != "cargar":
-                        with open(item.replace(',', '')) as file:
-                            data = json.load(file)
-                            dataList.append(data)
-                            # Lista registros cargados
-                            #for i in data:
-                            #    print('Nombre:', i['nombre'])
-                            print ('Comando Carga ejecutado.')
+                        if os.path.exists(item.replace(',', '')):
+                            with open(item.replace(',', '')) as file:
+                                data = json.load(file)
+                                dataList.append(data)
+                                # Lista registros cargados
+                                #for i in data:
+                                #    print('Nombre:', i['nombre'])
+                                print ('Comando Carga ejecutado.')
+                        else: print("Archivo no existe: ", item.replace(',', ''))
                 #print(data)
                 #print(dataList)
                 break
@@ -172,4 +176,57 @@ while True:
                                     k = k + 1
                     if minimo != 0: print('Minimo:', minimo)
 
+            # Reportar
+            if item.lower() == "reportar":
+                N = 0
+                for item in palabras_comando:
+                    if item.lower() != "reportar":
+                        N = int(item.lower())
+                    #print("N: ", N)
+                #if os.path.exists('reporte.html'):
+                #    os.remove('reporte.html')
+                #else: print("No se puedo borrar, modo append.")
+                #f = open('reporte.html', 'w')
+
+                TABLE = '''
+                <!DOCTYPE html>
+                <html>
+                    <head>
+                    </head>
+                    <body>
+                        <table>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Edad</th>
+                                <th>Activo</th>
+                                <th>Promedio</th>
+                            </tr>
+                %s
+                        </table>
+                    </body>
+                </html>
+                '''
+                ROW = ' ' * 16 + "<tr><td>%s</td><td>%d</td><td>%e</td><td>%f</td></tr>"
+                row_list = []
+                reporte = ""
+                if N != 0:
+                    numregrep = 0
+                    for i in dataList:
+                        k = 0
+                        for j in i:
+                            #print("k: ",k)
+                            #print("numregrep: ", numregrep)
+                            if numregrep < N:
+                                row_list = row_list + [ROW % (i[k]['nombre'],i[k]['edad'],i[k]['activo'],i[k]['promedio'])]
+                                k = k+1
+                                numregrep = numregrep + 1
+                                reporte = TABLE % '\n'.join(row_list)
+
+                    if os.path.exists('reporte.html'):
+                        os.remove('reporte.html')
+                    else: print("No se puedo borrar, modo append.")
+                    f = open('reporte.html', 'w')
+                    f.write(reporte)
+                    f.close()
+                    webbrowser.open_new_tab('reporte.html')
 # Fin del código.
